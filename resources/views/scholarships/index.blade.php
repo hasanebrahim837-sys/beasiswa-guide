@@ -51,25 +51,15 @@
 
                 <h3>{{ $scholarship->title }}</h3>
 
-                <div class="meta">
-                    Country: {{ $scholarship->country->name ?? '-' }}
-                </div>
+                <div class="meta"><b>Country:</b> {{ $scholarship->country->name ?? '-' }}</div>
 
-                <div class="meta">
-                    University: {{ $scholarship->university->name ?? 'General' }}
-                </div>
+                <div class="meta"><b>University:</b> {{ $scholarship->university->name ?? 'General' }}</div>
 
-                <div class="meta">
-                    Degree: {{ $scholarship->degree }}
-                </div>
+                <div class="meta"><b>Degree:</b> {{ $scholarship->degree }}</div>
 
-                <div class="meta">
-                    Funding: {{ $scholarship->funding_type }}
-                </div>
+                <div class="meta"><b>Funding:</b> {{ $scholarship->funding_type }}</div>
 
-                <div class="meta">
-                    Deadline: {{ $scholarship->deadline }}
-                </div>
+                <div class="meta"><b>Deadline:</b> {{ $scholarship->deadline ?? 'To be announced' }}</div>
 
                 <p>{{ Str::limit($scholarship->description, 120) }}</p>
 

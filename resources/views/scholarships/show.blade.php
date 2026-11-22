@@ -19,7 +19,7 @@
 
             <h1>{{ $scholarship->title }}</h1>
 
-            <p style="color:#6b7280; line-height:1.7;">
+            <p style="color:var(--muted); line-height:1.7;">
                 {{ $scholarship->description }}
             </p>
 
@@ -65,18 +65,30 @@
                 <p>{{ $scholarship->required_documents }}</p>
             </div>
 
-            <div style="margin-top: 35px; display: flex; gap: 12px; flex-wrap: wrap;">
-                <a href="{{ $scholarship->official_link }}" target="_blank" class="btn btn-primary">
+            <div style="margin-top: 30px; display: flex; gap: 12px; flex-wrap: wrap;">
+                <a href="{{ $scholarship->official_link }}" target="_blank" rel="noopener" class="btn btn-primary">
                     Apply Officially
-                </a>
-
-                <a href="{{ route('assistance.create', $scholarship) }}" class="btn btn-outline">
-                    Request Assistance
                 </a>
 
                 <a href="{{ route('scholarships.index') }}" class="btn btn-outline">
                     Back to Scholarships
                 </a>
+            </div>
+
+            <div class="help-box">
+                <div>
+                    <h3>Need help with this application?</h3>
+                    <p>We help you prepare your documents and apply. The admission decision belongs to the scholarship provider.</p>
+                </div>
+                <div class="actions">
+                    <a href="{{ route('assistance.create', $scholarship) }}" class="btn btn-cta">
+                        Request Assistance
+                    </a>
+                    <a href="https://wa.me/{{ config('app.whatsapp') }}?text={{ rawurlencode('Hello IndoScholar, I would like help with: ' . $scholarship->title) }}"
+                       target="_blank" rel="noopener" class="btn btn-ghost-light">
+                        @include('partials.whatsapp-icon') WhatsApp
+                    </a>
+                </div>
             </div>
         </div>
     </section>

@@ -14,7 +14,7 @@
         <div style="margin-bottom: 25px;">
             <span class="badge badge-open">Selected Scholarship</span>
             <h2 style="margin-top: 10px;">{{ $scholarship->title }}</h2>
-            <p style="color:#6b7280; margin-top:8px;">
+            <p style="color:var(--muted); margin-top:8px;">
                 University: {{ $scholarship->university->name ?? 'General' }} |
                 Country: {{ $scholarship->country->name ?? '-' }} |
                 Degree: {{ $scholarship->degree }}
@@ -35,7 +35,7 @@
                     <label>Full Name *</label>
                     <input type="text" name="full_name" value="{{ old('full_name') }}" required>
                     @error('full_name')
-                        <small style="color:#991b1b;">{{ $message }}</small>
+                        <small style="color:var(--burgundy);">{{ $message }}</small>
                     @enderror
                 </div>
 
@@ -43,7 +43,7 @@
                     <label>Email *</label>
                     <input type="email" name="email" value="{{ old('email') }}" required>
                     @error('email')
-                        <small style="color:#991b1b;">{{ $message }}</small>
+                        <small style="color:var(--burgundy);">{{ $message }}</small>
                     @enderror
                 </div>
 
@@ -100,7 +100,7 @@
             </div>
 
             <div style="margin-top: 25px; display:flex; gap:12px; flex-wrap:wrap;">
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" class="btn btn-cta">
                     Submit Request
                 </button>
 
