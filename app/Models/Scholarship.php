@@ -71,12 +71,25 @@ class Scholarship extends Model
 
     public function getFundingLabelAttribute(): string
     {
-        return filled($this->funding_type) ? __($this->funding_type) : '-';
+        return filled($this->funding_type) ? __($this->funding_type) : __('To be confirmed');
     }
 
     public function getStatusLabelAttribute(): string
     {
-        return __($this->status);
+        return $this->status === 'Unknown' ? __('Not announced yet') : __($this->status);
+    }
+
+    /**
+     * Scholarships shown on the public site: active, and not past their deadline.
+     * Closed ones are hidden automatically but kept, so they can be updated for the next cycle.
+     */
+    public function scopeVisible($query)
+    {
+        return $query->where('is_active', true)
+            ->where(function ($q) {
+                $q->whereNull('deadline')
+                    ->orWhereDate('deadline', '>=', now()->toDateString());
+            });
     }
 
     public function country()
