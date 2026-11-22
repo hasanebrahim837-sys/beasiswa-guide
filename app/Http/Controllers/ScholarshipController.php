@@ -11,12 +11,12 @@ class ScholarshipController extends Controller
     public function home()
     {
         $scholarships = Scholarship::with(['country', 'university'])
-            ->where('is_active', true)
-            ->orderBy('deadline', 'asc')
+            ->visible()
+            ->orderByRaw('deadline is null, deadline asc')
             ->take(3)
             ->get();
 
-        $totalScholarships = Scholarship::count();
+        $totalScholarships = Scholarship::visible()->count();
         $totalCountries = Country::count();
 
         return view('home', compact(
@@ -29,7 +29,7 @@ class ScholarshipController extends Controller
     public function index(Request $request)
     {
         $query = Scholarship::with(['country', 'university'])
-            ->where('is_active', true);
+            ->visible();
 
         if ($request->filled('search')) {
             $search = '%' . $request->search . '%';
@@ -47,7 +47,7 @@ class ScholarshipController extends Controller
             $query->where('country_id', $request->country_id);
         }
 
-        $scholarships = $query->orderBy('deadline', 'asc')->paginate(6);
+        $scholarships = $query->orderByRaw('deadline is null, deadline asc')->paginate(6);
         $countries = Country::orderBy('name')->get();
 
         return view('scholarships.index', compact('scholarships', 'countries'));
