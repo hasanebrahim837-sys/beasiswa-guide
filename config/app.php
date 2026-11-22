@@ -13,7 +13,18 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'IndoScholar'),
+
+    /*
+    | WhatsApp contact shown on the public site (digits only for wa.me links).
+    */
+    'whatsapp' => env('WHATSAPP_NUMBER', '6285797161158'),
+    'whatsapp_display' => env('WHATSAPP_DISPLAY', '+62 857 9716 1158'),
+
+    /*
+    | Language shown to a visitor who has not picked one with the flag buttons yet.
+    */
+    'site_locale' => env('SITE_LOCALE', 'ar'),
 
     /*
     |--------------------------------------------------------------------------

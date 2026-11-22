@@ -41,6 +41,10 @@ class AdminScholarshipController extends Controller
             'description' => 'nullable|string',
             'eligibility' => 'nullable|string',
             'required_documents' => 'nullable|string',
+            'title_ar' => 'nullable|string|max:255',
+            'description_ar' => 'nullable|string',
+            'eligibility_ar' => 'nullable|string',
+            'required_documents_ar' => 'nullable|string',
             'is_active' => 'nullable|boolean',
         ]);
 
@@ -50,7 +54,7 @@ class AdminScholarshipController extends Controller
 
         return redirect()
             ->route('admin.scholarships.index')
-            ->with('success', 'Scholarship created successfully.');
+            ->with('success', __('Scholarship created successfully.'));
     }
 
     public function edit(Scholarship $scholarship)
@@ -76,6 +80,10 @@ class AdminScholarshipController extends Controller
             'description' => 'nullable|string',
             'eligibility' => 'nullable|string',
             'required_documents' => 'nullable|string',
+            'title_ar' => 'nullable|string|max:255',
+            'description_ar' => 'nullable|string',
+            'eligibility_ar' => 'nullable|string',
+            'required_documents_ar' => 'nullable|string',
             'is_active' => 'nullable|boolean',
         ]);
 
@@ -85,7 +93,7 @@ class AdminScholarshipController extends Controller
 
         return redirect()
             ->route('admin.scholarships.index')
-            ->with('success', 'Scholarship updated successfully.');
+            ->with('success', __('Scholarship updated successfully.'));
     }
 
     public function destroy(Scholarship $scholarship)
@@ -94,6 +102,6 @@ class AdminScholarshipController extends Controller
 
         return redirect()
             ->route('admin.scholarships.index')
-            ->with('success', 'Scholarship deleted successfully.');
+            ->with('success', __('Scholarship deleted successfully.'));
     }
 }

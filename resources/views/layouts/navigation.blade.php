@@ -3,8 +3,8 @@
         <div class="flex justify-between h-16">
             <div class="flex">
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('home') }}" style="font-weight:bold; font-size:22px; color:#0f766e;">
-                        Beasiswa<span style="color:#111827;">Guide</span>
+                    <a href="{{ route('home') }}">
+                        @include('partials.wordmark', ['tagline' => false])
                     </a>
                 </div>
 
@@ -62,11 +62,11 @@
                         </x-slot>
                     </x-dropdown>
                 @else
-                    <a href="{{ route('login') }}" style="margin-right:15px; font-weight:bold; color:#0f766e;">
+                    <a href="{{ route('login') }}" style="margin-right:15px; font-weight:bold; color:#4B1A24;">
                         Login
                     </a>
 
-                    <a href="{{ route('register') }}" style="font-weight:bold; color:#111827;">
+                    <a href="{{ route('register') }}" style="font-weight:bold; color:#2B211C;">
                         Register
                     </a>
                 @endauth

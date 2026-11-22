@@ -69,6 +69,6 @@ class AssistanceRequestController extends Controller
 
         return redirect()
             ->route('scholarships.show', $scholarship)
-            ->with('success', 'Your assistance request has been submitted successfully.');
+            ->with('success', __('Your assistance request has been submitted successfully.'));
     }
 }

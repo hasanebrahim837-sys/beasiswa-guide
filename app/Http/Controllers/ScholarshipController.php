@@ -32,7 +32,11 @@ class ScholarshipController extends Controller
             ->where('is_active', true);
 
         if ($request->filled('search')) {
-            $query->where('title', 'like', '%' . $request->search . '%');
+            $search = '%' . $request->search . '%';
+            $query->where(function ($q) use ($search) {
+                $q->where('title', 'like', $search)
+                    ->orWhere('title_ar', 'like', $search);
+            });
         }
 
         if ($request->filled('degree')) {
