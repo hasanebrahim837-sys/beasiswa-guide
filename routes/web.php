@@ -17,7 +17,11 @@ use App\Http\Controllers\AdminDashboardController;
 Route::get('/lang/{locale}', function (string $locale) {
     session(['locale' => $locale]);
 
-    return redirect()->back();
+    // Go back to the page the visitor was on, but only if it is a page of this site.
+    $previous = url()->previous();
+    $sameSite = parse_url($previous, PHP_URL_HOST) === request()->getHost();
+
+    return redirect()->to($sameSite ? $previous : route('home'));
 })->whereIn('locale', \App\Http\Middleware\SetLocale::SUPPORTED)->name('lang.switch');
 
 Route::get('/', [ScholarshipController::class, 'home'])
@@ -33,6 +37,7 @@ Route::get('/scholarships/{scholarship}/request-assistance', [AssistanceRequestC
     ->name('assistance.create');
 
 Route::post('/scholarships/{scholarship}/request-assistance', [AssistanceRequestController::class, 'store'])
+    ->middleware('throttle:assistance')
     ->name('assistance.store');
 
 

@@ -31,6 +31,8 @@ class AssistanceRequestController extends Controller
             'transcript' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:5120',
             'cv' => 'nullable|file|mimes:pdf,doc,docx|max:5120',
             'motivation_letter' => 'nullable|file|mimes:pdf,doc,docx|max:5120',
+
+            'consent' => 'accepted',
         ]);
 
         $assistanceRequest = AssistanceRequest::create([

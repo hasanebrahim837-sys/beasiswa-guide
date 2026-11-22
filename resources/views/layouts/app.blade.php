@@ -44,7 +44,9 @@
                 </form>
             @else
                 <a href="{{ route('login') }}">{{ __('Login') }}</a>
-                <a href="{{ route('register') }}">{{ __('Register') }}</a>
+                @if(config('app.registration_enabled'))
+                    <a href="{{ route('register') }}">{{ __('Register') }}</a>
+                @endif
             @endauth
 
             <a href="{{ $waLink }}" target="_blank" rel="noopener" class="btn btn-cta">

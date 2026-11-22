@@ -37,6 +37,7 @@ class StudentDocumentPrivacyTest extends TestCase
             'full_name' => 'Student Name',
             'email' => 'student@example.test',
             'passport' => UploadedFile::fake()->create('passport.pdf', 100, 'application/pdf'),
+            'consent' => '1',
         ])->assertRedirect();
 
         return Document::firstOrFail();
