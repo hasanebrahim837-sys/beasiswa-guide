@@ -56,7 +56,8 @@ class AssistanceRequestController extends Controller
         foreach ($files as $inputName => $documentType) {
             if ($request->hasFile($inputName)) {
                 $file = $request->file($inputName);
-                $path = $file->store('assistance-documents', 'public');
+                // Private storage: never reachable by a direct link.
+                $path = $file->store('assistance-documents', Document::DISK);
 
                 Document::create([
                     'assistance_request_id' => $assistanceRequest->id,
