@@ -15,7 +15,8 @@ class SetLocale
 
     public function handle(Request $request, Closure $next): Response
     {
-        $locale = $request->session()->get('locale', config('app.locale'));
+        // First visit: the site's default language (Arabic); afterwards the visitor's choice.
+        $locale = $request->session()->get('locale', config('app.site_locale', 'ar'));
 
         if (in_array($locale, self::SUPPORTED, true)) {
             app()->setLocale($locale);

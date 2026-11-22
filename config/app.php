@@ -22,6 +22,11 @@ return [
     'whatsapp_display' => env('WHATSAPP_DISPLAY', '+62 857 9716 1158'),
 
     /*
+    | Language shown to a visitor who has not picked one with the flag buttons yet.
+    */
+    'site_locale' => env('SITE_LOCALE', 'ar'),
+
+    /*
     |--------------------------------------------------------------------------
     | Application Environment
     |--------------------------------------------------------------------------
