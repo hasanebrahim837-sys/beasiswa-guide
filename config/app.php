@@ -27,6 +27,12 @@ return [
     'site_locale' => env('SITE_LOCALE', 'ar'),
 
     /*
+    | Public account registration. Closed by default: students request help without an account,
+    | and admins are created with "php artisan make:admin".
+    */
+    'registration_enabled' => (bool) env('REGISTRATION_ENABLED', false),
+
+    /*
     |--------------------------------------------------------------------------
     | Application Environment
     |--------------------------------------------------------------------------

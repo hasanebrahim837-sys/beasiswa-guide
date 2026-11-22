@@ -131,6 +131,12 @@ select { padding-inline-end: 40px; }
 .file-field .file-name { color: var(--muted); font-size: 14px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .file-field:focus-within { border-color: var(--olive); box-shadow: 0 0 0 3px rgba(107, 105, 71, .2); }
 
+/* Privacy note + consent on the assistance form */
+.privacy-note { margin-top: 10px; background: var(--olive-soft); border-radius: 16px; padding: 18px 20px; color: var(--dark); line-height: 1.7; }
+.privacy-note p { margin-bottom: 8px; }
+.privacy-note .consent { display: flex; align-items: flex-start; gap: 10px; font-weight: 700; cursor: pointer; }
+.privacy-note .consent input { margin-top: 4px; flex: none; }
+
 /* ---------- Detail / forms ---------- */
 .detail-box, .form-card { background: var(--paper); border-radius: 24px; padding: 35px; border: 1px solid var(--line); box-shadow: 0 10px 25px rgba(43, 33, 28, .06); }
 .detail-box h1 { font-size: 36px; margin-bottom: 15px; color: var(--burgundy); }

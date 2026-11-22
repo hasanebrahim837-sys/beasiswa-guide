@@ -66,9 +66,11 @@
                         Login
                     </a>
 
-                    <a href="{{ route('register') }}" style="font-weight:bold; color:#2B211C;">
-                        Register
-                    </a>
+                    @if(config('app.registration_enabled'))
+                        <a href="{{ route('register') }}" style="font-weight:bold; color:#2B211C;">
+                            {{ __('Register') }}
+                        </a>
+                    @endif
                 @endauth
             </div>
         </div>

@@ -21,6 +21,10 @@
             </p>
         </div>
 
+        @if(session('error'))
+            <div class="alert-error">{{ session('error') }}</div>
+        @endif
+
         @if($errors->any())
             <div class="alert-error">
                 {{ __('Please check the form fields and upload valid files.') }}
@@ -97,6 +101,18 @@
                     <label>{{ __('Additional Notes') }}</label>
                     <textarea name="student_notes" rows="5" placeholder="{{ __('Write any important information...') }}">{{ old('student_notes') }}</textarea>
                 </div>
+            </div>
+
+            <div class="privacy-note">
+                <p><strong>🔒 {{ __('Your privacy') }}</strong></p>
+                <p>{{ __('Your information and documents are used only to help you with this scholarship application. Your documents are stored privately, only our team can open them, and we never share them without your permission.') }}</p>
+                <label class="consent">
+                    <input type="checkbox" name="consent" value="1" {{ old('consent') ? 'checked' : '' }} required>
+                    <span>{{ __('I agree that IndoScholar may use my information and documents to help me with this application.') }}</span>
+                </label>
+                @error('consent')
+                    <small style="color:var(--burgundy);">{{ $message }}</small>
+                @enderror
             </div>
 
             <div style="margin-top: 25px; display:flex; gap:12px; flex-wrap:wrap;">
