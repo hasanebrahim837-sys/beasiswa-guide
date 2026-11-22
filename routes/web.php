@@ -13,6 +13,13 @@ use App\Http\Controllers\AdminDashboardController;
 |--------------------------------------------------------------------------
 */
 
+// Language switch (flag buttons): stores the choice in the session and returns to the same page.
+Route::get('/lang/{locale}', function (string $locale) {
+    session(['locale' => $locale]);
+
+    return redirect()->back();
+})->whereIn('locale', \App\Http\Middleware\SetLocale::SUPPORTED)->name('lang.switch');
+
 Route::get('/', [ScholarshipController::class, 'home'])
     ->name('home');
 

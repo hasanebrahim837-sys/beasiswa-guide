@@ -60,6 +60,10 @@ class DatabaseSeeder extends Seeder
                 'description' => 'KNB Scholarship is an Indonesian government scholarship for international students from developing countries.',
                 'eligibility' => 'International students, good academic record, valid passport, and required academic documents.',
                 'required_documents' => 'Passport, academic certificate, transcript, recommendation letter, English certificate, motivation letter.',
+                'title_ar' => 'منحة KNB',
+                'description_ar' => 'منحة KNB هي منحة من الحكومة الإندونيسية للطلاب الدوليين من الدول النامية.',
+                'eligibility_ar' => 'طلاب دوليون، سجل أكاديمي جيد، جواز سفر ساري، والوثائق الأكاديمية المطلوبة.',
+                'required_documents_ar' => 'جواز السفر، الشهادة الدراسية، كشف الدرجات، خطاب توصية، شهادة اللغة الإنجليزية، رسالة الدافع.',
                 'is_active' => true,
             ]
         );
@@ -78,6 +82,10 @@ class DatabaseSeeder extends Seeder
                 'description' => 'Darmasiswa is a scholarship program for foreign students to study Indonesian language, arts, and culture.',
                 'eligibility' => 'Foreign students interested in Indonesian language, culture, and arts.',
                 'required_documents' => 'Passport, CV, academic certificate, health certificate, recommendation letter.',
+                'title_ar' => 'منحة دارماسيسوا',
+                'description_ar' => 'دارماسيسوا برنامج منح للطلاب الأجانب لدراسة اللغة الإندونيسية والفنون والثقافة.',
+                'eligibility_ar' => 'طلاب أجانب مهتمون باللغة والثقافة والفنون الإندونيسية.',
+                'required_documents_ar' => 'جواز السفر، السيرة الذاتية، الشهادة الدراسية، شهادة صحية، خطاب توصية.',
                 'is_active' => true,
             ]
         );
@@ -96,6 +104,10 @@ class DatabaseSeeder extends Seeder
                 'description' => 'A sample scholarship information for international students who want to study at UIN Salatiga.',
                 'eligibility' => 'International students with complete academic documents.',
                 'required_documents' => 'Passport, diploma, transcript, photo, motivation letter.',
+                'title_ar' => 'منحة جامعة UIN سالاتيغا للطلاب الدوليين',
+                'description_ar' => 'معلومات منحة تجريبية للطلاب الدوليين الراغبين في الدراسة في جامعة UIN سالاتيغا.',
+                'eligibility_ar' => 'طلاب دوليون لديهم وثائق أكاديمية مكتملة.',
+                'required_documents_ar' => 'جواز السفر، الشهادة، كشف الدرجات، صورة شخصية، رسالة الدافع.',
                 'is_active' => true,
             ]
         );

@@ -5,8 +5,8 @@
 <section class="section">
     <div class="section-title">
         <div>
-            <h2>Scholarships</h2>
-            <p>Search and filter verified scholarship opportunities.</p>
+            <h2>{{ __('Scholarships') }}</h2>
+            <p>{{ __('Search and filter verified scholarship opportunities.') }}</p>
         </div>
     </div>
 
@@ -14,20 +14,20 @@
         <input
             type="text"
             name="search"
-            placeholder="Search scholarship..."
+            placeholder="{{ __('Search scholarship...') }}"
             value="{{ request('search') }}"
         >
 
         <select name="degree">
-            <option value="">All Degrees</option>
-            <option value="Bachelor" {{ request('degree') == 'Bachelor' ? 'selected' : '' }}>Bachelor</option>
-            <option value="Master" {{ request('degree') == 'Master' ? 'selected' : '' }}>Master</option>
-            <option value="PhD" {{ request('degree') == 'PhD' ? 'selected' : '' }}>PhD</option>
-            <option value="Non-degree" {{ request('degree') == 'Non-degree' ? 'selected' : '' }}>Non-degree</option>
+            <option value="">{{ __('All Degrees') }}</option>
+            <option value="Bachelor" {{ request('degree') == 'Bachelor' ? 'selected' : '' }}>{{ __('Bachelor') }}</option>
+            <option value="Master" {{ request('degree') == 'Master' ? 'selected' : '' }}>{{ __('Master') }}</option>
+            <option value="PhD" {{ request('degree') == 'PhD' ? 'selected' : '' }}>{{ __('PhD') }}</option>
+            <option value="Non-degree" {{ request('degree') == 'Non-degree' ? 'selected' : '' }}>{{ __('Non-degree') }}</option>
         </select>
 
         <select name="country_id">
-            <option value="">All Countries</option>
+            <option value="">{{ __('All Countries') }}</option>
             @foreach($countries as $country)
                 <option value="{{ $country->id }}" {{ request('country_id') == $country->id ? 'selected' : '' }}>
                     {{ $country->name }}
@@ -35,42 +35,42 @@
             @endforeach
         </select>
 
-        <button type="submit" class="btn btn-primary">Search</button>
+        <button type="submit" class="btn btn-primary">{{ __('Search') }}</button>
     </form>
 
     <div class="grid">
         @forelse($scholarships as $scholarship)
             <div class="card">
                 @if($scholarship->status == 'Open')
-                    <span class="badge badge-open">Open</span>
+                    <span class="badge badge-open">{{ __('Open') }}</span>
                 @elseif($scholarship->status == 'Closed')
-                    <span class="badge badge-closed">Closed</span>
+                    <span class="badge badge-closed">{{ __('Closed') }}</span>
                 @else
-                    <span class="badge badge-soon">{{ $scholarship->status }}</span>
+                    <span class="badge badge-soon">{{ $scholarship->status_label }}</span>
                 @endif
 
-                <h3>{{ $scholarship->title }}</h3>
+                <h3>{{ $scholarship->localized('title') }}</h3>
 
-                <div class="meta"><b>Country:</b> {{ $scholarship->country->name ?? '-' }}</div>
+                <div class="meta"><b>{{ __('Country') }}:</b> {{ __($scholarship->country->name ?? '-') }}</div>
 
-                <div class="meta"><b>University:</b> {{ $scholarship->university->name ?? 'General' }}</div>
+                <div class="meta"><b>{{ __('University') }}:</b> {{ $scholarship->university->name ?? __('General') }}</div>
 
-                <div class="meta"><b>Degree:</b> {{ $scholarship->degree }}</div>
+                <div class="meta"><b>{{ __('Degree') }}:</b> {{ $scholarship->degree_label }}</div>
 
-                <div class="meta"><b>Funding:</b> {{ $scholarship->funding_type }}</div>
+                <div class="meta"><b>{{ __('Funding') }}:</b> {{ $scholarship->funding_label }}</div>
 
-                <div class="meta"><b>Deadline:</b> {{ $scholarship->deadline ?? 'To be announced' }}</div>
+                <div class="meta"><b>{{ __('Deadline') }}:</b> <bdi dir="ltr">{{ $scholarship->deadline ?? __('To be announced') }}</bdi></div>
 
-                <p>{{ Str::limit($scholarship->description, 120) }}</p>
+                <p>{{ Str::limit($scholarship->localized('description'), 120) }}</p>
 
                 <a href="{{ route('scholarships.show', $scholarship) }}" class="btn btn-primary">
-                    View Details
+                    {{ __('View Details') }}
                 </a>
             </div>
         @empty
             <div class="card">
-                <h3>No scholarships found</h3>
-                <p>Please try another keyword or filter.</p>
+                <h3>{{ __('No scholarships found') }}</h3>
+                <p>{{ __('Please try another keyword or filter.') }}</p>
             </div>
         @endforelse
     </div>

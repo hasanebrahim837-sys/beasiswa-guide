@@ -5,25 +5,25 @@
 <section class="section">
     <div class="section-title">
         <div>
-            <h2>Request Application Assistance</h2>
-            <p>Submit your information and documents to get help with this scholarship application.</p>
+            <h2>{{ __('Request Application Assistance') }}</h2>
+            <p>{{ __('Submit your information and documents to get help with this scholarship application.') }}</p>
         </div>
     </div>
 
     <div class="form-card">
         <div style="margin-bottom: 25px;">
-            <span class="badge badge-open">Selected Scholarship</span>
-            <h2 style="margin-top: 10px;">{{ $scholarship->title }}</h2>
+            <span class="badge badge-open">{{ __('Selected Scholarship') }}</span>
+            <h2 style="margin-top: 10px;">{{ $scholarship->localized('title') }}</h2>
             <p style="color:var(--muted); margin-top:8px;">
-                University: {{ $scholarship->university->name ?? 'General' }} |
-                Country: {{ $scholarship->country->name ?? '-' }} |
-                Degree: {{ $scholarship->degree }}
+                {{ __('University') }}: {{ $scholarship->university->name ?? __('General') }} |
+                {{ __('Country') }}: {{ __($scholarship->country->name ?? '-') }} |
+                {{ __('Degree') }}: {{ $scholarship->degree_label }}
             </p>
         </div>
 
         @if($errors->any())
             <div class="alert-error">
-                Please check the form fields and upload valid files.
+                {{ __('Please check the form fields and upload valid files.') }}
             </div>
         @endif
 
@@ -32,7 +32,7 @@
 
             <div class="form-grid">
                 <div class="form-group">
-                    <label>Full Name *</label>
+                    <label>{{ __('Full Name') }} *</label>
                     <input type="text" name="full_name" value="{{ old('full_name') }}" required>
                     @error('full_name')
                         <small style="color:var(--burgundy);">{{ $message }}</small>
@@ -40,7 +40,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Email *</label>
+                    <label>{{ __('Email') }} *</label>
                     <input type="email" name="email" value="{{ old('email') }}" required>
                     @error('email')
                         <small style="color:var(--burgundy);">{{ $message }}</small>
@@ -48,64 +48,64 @@
                 </div>
 
                 <div class="form-group">
-                    <label>WhatsApp Number</label>
-                    <input type="text" name="whatsapp" value="{{ old('whatsapp') }}" placeholder="+62...">
+                    <label>{{ __('WhatsApp Number') }}</label>
+                    <input type="tel" name="whatsapp" dir="ltr" value="{{ old('whatsapp') }}" placeholder="&#x200E;+62...">
                 </div>
 
                 <div class="form-group">
-                    <label>Nationality</label>
-                    <input type="text" name="nationality" value="{{ old('nationality') }}" placeholder="Yemen, Indonesia, etc.">
+                    <label>{{ __('Nationality') }}</label>
+                    <input type="text" name="nationality" value="{{ old('nationality') }}" placeholder="{{ __('Yemen, Indonesia, etc.') }}">
                 </div>
 
                 <div class="form-group">
-                    <label>Degree</label>
+                    <label>{{ __('Degree') }}</label>
                     <select name="degree">
-                        <option value="">Select Degree</option>
-                        <option value="Bachelor" {{ old('degree') == 'Bachelor' ? 'selected' : '' }}>Bachelor</option>
-                        <option value="Master" {{ old('degree') == 'Master' ? 'selected' : '' }}>Master</option>
-                        <option value="PhD" {{ old('degree') == 'PhD' ? 'selected' : '' }}>PhD</option>
-                        <option value="Non-degree" {{ old('degree') == 'Non-degree' ? 'selected' : '' }}>Non-degree</option>
+                        <option value="">{{ __('Select Degree') }}</option>
+                        <option value="Bachelor" {{ old('degree') == 'Bachelor' ? 'selected' : '' }}>{{ __('Bachelor') }}</option>
+                        <option value="Master" {{ old('degree') == 'Master' ? 'selected' : '' }}>{{ __('Master') }}</option>
+                        <option value="PhD" {{ old('degree') == 'PhD' ? 'selected' : '' }}>{{ __('PhD') }}</option>
+                        <option value="Non-degree" {{ old('degree') == 'Non-degree' ? 'selected' : '' }}>{{ __('Non-degree') }}</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label>Passport</label>
-                    <input type="file" name="passport">
+                    <label>{{ __('Passport') }}</label>
+                    @include('partials.file-input', ['name' => 'passport', 'accept' => '.pdf,.jpg,.jpeg,.png'])
                 </div>
 
                 <div class="form-group">
-                    <label>Academic Certificate</label>
-                    <input type="file" name="certificate">
+                    <label>{{ __('Academic Certificate') }}</label>
+                    @include('partials.file-input', ['name' => 'certificate', 'accept' => '.pdf,.jpg,.jpeg,.png'])
                 </div>
 
                 <div class="form-group">
-                    <label>Academic Transcript</label>
-                    <input type="file" name="transcript">
+                    <label>{{ __('Academic Transcript') }}</label>
+                    @include('partials.file-input', ['name' => 'transcript', 'accept' => '.pdf,.jpg,.jpeg,.png'])
                 </div>
 
                 <div class="form-group">
-                    <label>CV</label>
-                    <input type="file" name="cv">
+                    <label>{{ __('CV') }}</label>
+                    @include('partials.file-input', ['name' => 'cv', 'accept' => '.pdf,.doc,.docx'])
                 </div>
 
                 <div class="form-group">
-                    <label>Motivation Letter</label>
-                    <input type="file" name="motivation_letter">
+                    <label>{{ __('Motivation Letter') }}</label>
+                    @include('partials.file-input', ['name' => 'motivation_letter', 'accept' => '.pdf,.doc,.docx'])
                 </div>
 
                 <div class="form-group form-full">
-                    <label>Additional Notes</label>
-                    <textarea name="student_notes" rows="5" placeholder="Write any important information...">{{ old('student_notes') }}</textarea>
+                    <label>{{ __('Additional Notes') }}</label>
+                    <textarea name="student_notes" rows="5" placeholder="{{ __('Write any important information...') }}">{{ old('student_notes') }}</textarea>
                 </div>
             </div>
 
             <div style="margin-top: 25px; display:flex; gap:12px; flex-wrap:wrap;">
                 <button type="submit" class="btn btn-cta">
-                    Submit Request
+                    {{ __('Submit Request') }}
                 </button>
 
                 <a href="{{ route('scholarships.show', $scholarship) }}" class="btn btn-outline">
-                    Back
+                    {{ __('Back') }}
                 </a>
             </div>
         </form>

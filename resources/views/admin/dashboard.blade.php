@@ -5,51 +5,51 @@
 <section class="section">
     <div class="section-title">
         <div>
-            <h2>Admin Dashboard</h2>
-            <p>Overview of scholarships, universities, and student assistance requests.</p>
+            <h2>{{ __('Admin Dashboard') }}</h2>
+            <p>{{ __('Overview of scholarships, universities, and student assistance requests.') }}</p>
         </div>
     </div>
 
     <div class="stats" style="margin-bottom: 35px;">
         <div class="stat-card">
             <h3>{{ $totalScholarships }}</h3>
-            <p>Total Scholarships</p>
+            <p>{{ __('Total Scholarships') }}</p>
         </div>
 
         <div class="stat-card">
             <h3>{{ $activeScholarships }}</h3>
-            <p>Active Scholarships</p>
+            <p>{{ __('Active Scholarships') }}</p>
         </div>
 
         <div class="stat-card">
             <h3>{{ $totalRequests }}</h3>
-            <p>Student Requests</p>
+            <p>{{ __('Student Requests') }}</p>
         </div>
 
         <div class="stat-card">
             <h3>{{ $pendingRequests }}</h3>
-            <p>Pending Requests</p>
+            <p>{{ __('Pending Requests') }}</p>
         </div>
 
         <div class="stat-card">
             <h3>{{ $totalCountries }}</h3>
-            <p>Countries</p>
+            <p>{{ __('Countries') }}</p>
         </div>
 
         <div class="stat-card">
             <h3>{{ $totalUniversities }}</h3>
-            <p>Universities</p>
+            <p>{{ __('Universities') }}</p>
         </div>
     </div>
 
     <div class="section-title">
         <div>
-            <h2>Latest Assistance Requests</h2>
-            <p>Recently submitted student assistance requests.</p>
+            <h2>{{ __('Latest Assistance Requests') }}</h2>
+            <p>{{ __('Recently submitted student assistance requests.') }}</p>
         </div>
 
         <a href="{{ route('admin.assistance_requests.index') }}" class="btn btn-outline">
-            View All Requests
+            {{ __('View All Requests') }}
         </a>
     </div>
 
@@ -57,12 +57,12 @@
         <table class="admin-table">
             <thead>
                 <tr>
-                    <th>Student</th>
-                    <th>Scholarship</th>
-                    <th>University</th>
-                    <th>Status</th>
-                    <th>Date</th>
-                    <th>Action</th>
+                    <th>{{ __('Student') }}</th>
+                    <th>{{ __('Scholarship') }}</th>
+                    <th>{{ __('University') }}</th>
+                    <th>{{ __('Status') }}</th>
+                    <th>{{ __('Date') }}</th>
+                    <th>{{ __('Action') }}</th>
                 </tr>
             </thead>
 
@@ -74,25 +74,25 @@
                             {{ $request->email }}
                         </td>
 
-                        <td>{{ $request->scholarship->title ?? '-' }}</td>
+                        <td>{{ $request->scholarship?->localized('title') ?? '-' }}</td>
 
                         <td>{{ $request->university->name ?? '-' }}</td>
 
                         <td>
-                            <span class="status-pill">{{ $request->status }}</span>
+                            <span class="status-pill">{{ __($request->status) }}</span>
                         </td>
 
-                        <td>{{ $request->created_at->format('d M Y') }}</td>
+                        <td><bdi dir="ltr">{{ $request->created_at->format('Y-m-d') }}</bdi></td>
 
                         <td>
                             <a href="{{ route('admin.assistance_requests.show', $request) }}" class="btn btn-primary">
-                                View
+                                {{ __('View') }}
                             </a>
                         </td>
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="6">No assistance requests yet.</td>
+                        <td colspan="6">{{ __('No assistance requests yet.') }}</td>
                     </tr>
                 @endforelse
             </tbody>

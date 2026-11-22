@@ -5,8 +5,8 @@
 <section class="section">
     <div class="section-title">
         <div>
-            <h2>Admin Dashboard</h2>
-            <p>Manage student assistance requests.</p>
+            <h2>{{ __('Admin Dashboard') }}</h2>
+            <p>{{ __('Manage student assistance requests.') }}</p>
         </div>
     </div>
 
@@ -14,13 +14,13 @@
         <table class="admin-table">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Student</th>
-                    <th>Scholarship</th>
-                    <th>University</th>
-                    <th>Status</th>
-                    <th>Submitted At</th>
-                    <th>Action</th>
+                    <th>{{ __('ID') }}</th>
+                    <th>{{ __('Student') }}</th>
+                    <th>{{ __('Scholarship') }}</th>
+                    <th>{{ __('University') }}</th>
+                    <th>{{ __('Status') }}</th>
+                    <th>{{ __('Submitted At') }}</th>
+                    <th>{{ __('Action') }}</th>
                 </tr>
             </thead>
 
@@ -35,25 +35,25 @@
                             {{ $request->whatsapp }}
                         </td>
 
-                        <td>{{ $request->scholarship->title ?? '-' }}</td>
+                        <td>{{ $request->scholarship?->localized('title') ?? '-' }}</td>
 
                         <td>{{ $request->university->name ?? '-' }}</td>
 
                         <td>
-                            <span class="status-pill">{{ $request->status }}</span>
+                            <span class="status-pill">{{ __($request->status) }}</span>
                         </td>
 
-                        <td>{{ $request->created_at->format('d M Y') }}</td>
+                        <td><bdi dir="ltr">{{ $request->created_at->format('Y-m-d') }}</bdi></td>
 
                         <td>
                             <a href="{{ route('admin.assistance_requests.show', $request) }}" class="btn btn-primary">
-                                View
+                                {{ __('View') }}
                             </a>
                         </td>
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="7">No assistance requests found.</td>
+                        <td colspan="7">{{ __('No assistance requests found.') }}</td>
                     </tr>
                 @endforelse
             </tbody>

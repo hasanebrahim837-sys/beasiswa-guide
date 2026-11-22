@@ -10,88 +10,88 @@
             </div>
         @endif
 
-        <span class="status-pill">{{ $assistanceRequest->status }}</span>
+        <span class="status-pill">{{ __($assistanceRequest->status) }}</span>
 
         <h1 style="margin-top: 15px;">{{ $assistanceRequest->full_name }}</h1>
 
         <div class="info-row">
             <div class="info-item">
-                <strong>Email</strong>
+                <strong>{{ __('Email') }}</strong>
                 {{ $assistanceRequest->email }}
             </div>
 
             <div class="info-item">
-                <strong>WhatsApp</strong>
+                <strong>{{ __('WhatsApp') }}</strong>
                 {{ $assistanceRequest->whatsapp ?? '-' }}
             </div>
 
             <div class="info-item">
-                <strong>Nationality</strong>
+                <strong>{{ __('Nationality') }}</strong>
                 {{ $assistanceRequest->nationality ?? '-' }}
             </div>
 
             <div class="info-item">
-                <strong>Scholarship</strong>
-                {{ $assistanceRequest->scholarship->title ?? '-' }}
+                <strong>{{ __('Scholarship') }}</strong>
+                {{ $assistanceRequest->scholarship?->localized('title') ?? '-' }}
             </div>
 
             <div class="info-item">
-                <strong>University</strong>
+                <strong>{{ __('University') }}</strong>
                 {{ $assistanceRequest->university->name ?? '-' }}
             </div>
 
             <div class="info-item">
-                <strong>Degree</strong>
-                {{ $assistanceRequest->degree ?? '-' }}
+                <strong>{{ __('Degree') }}</strong>
+                {{ \App\Models\Scholarship::translateList($assistanceRequest->degree) }}
             </div>
         </div>
 
         <div class="content-block">
-            <h3>Student Notes</h3>
+            <h3>{{ __('Student Notes') }}</h3>
             <p>{{ $assistanceRequest->student_notes ?? 'No notes.' }}</p>
         </div>
 
         <div class="content-block">
-            <h3>Uploaded Documents</h3>
+            <h3>{{ __('Uploaded Documents') }}</h3>
 
             @forelse($assistanceRequest->documents as $document)
                 <a class="file-link" href="{{ asset('storage/' . $document->file_path) }}" target="_blank">
-                    {{ $document->document_type }} - {{ $document->original_name }}
+                    {{ __($document->document_type) }} - {{ $document->original_name }}
                 </a>
             @empty
-                <p>No documents uploaded.</p>
+                <p>{{ __('No documents uploaded.') }}</p>
             @endforelse
         </div>
 
         <div class="content-block">
-            <h3>Update Request Status</h3>
+            <h3>{{ __('Update Request Status') }}</h3>
 
             <form method="POST" action="{{ route('admin.assistance_requests.update', $assistanceRequest) }}">
                 @csrf
                 @method('PUT')
 
                 <div class="form-group">
-                    <label>Status</label>
+                    <label>{{ __('Status') }}</label>
                     <select name="status" required>
                         @foreach(['Pending', 'Checking Documents', 'Missing Documents', 'Ready to Apply', 'Submitted', 'Completed', 'Rejected'] as $status)
                             <option value="{{ $status }}" {{ $assistanceRequest->status == $status ? 'selected' : '' }}>
-                                {{ $status }}
+                                {{ __($status) }}
                             </option>
                         @endforeach
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label>Admin Notes</label>
+                    <label>{{ __('Admin Notes') }}</label>
                     <textarea name="admin_notes" rows="5">{{ old('admin_notes', $assistanceRequest->admin_notes) }}</textarea>
                 </div>
 
                 <button type="submit" class="btn btn-primary">
-                    Update Status
+                    {{ __('Update Status') }}
                 </button>
 
                 <a href="{{ route('admin.assistance_requests.index') }}" class="btn btn-outline">
-                    Back to Requests
+                    {{ __('Back to Requests') }}
                 </a>
             </form>
         </div>

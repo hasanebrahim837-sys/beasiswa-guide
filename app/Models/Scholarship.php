@@ -19,8 +19,65 @@ class Scholarship extends Model
         'description',
         'eligibility',
         'required_documents',
+        'title_ar',
+        'description_ar',
+        'eligibility_ar',
+        'required_documents_ar',
         'is_active',
     ];
+
+    /**
+     * Fields that have an optional Arabic version stored in "<field>_ar".
+     */
+    public const TRANSLATABLE = ['title', 'description', 'eligibility', 'required_documents'];
+
+    /**
+     * Return the field in the visitor's language: the Arabic version when the site is in
+     * Arabic and one was entered, otherwise the English original.
+     */
+    public function localized(string $field): ?string
+    {
+        if (app()->getLocale() === 'ar' && in_array($field, self::TRANSLATABLE, true)) {
+            $arabic = $this->getAttribute($field . '_ar');
+
+            if (filled($arabic)) {
+                return $arabic;
+            }
+        }
+
+        return $this->getAttribute($field);
+    }
+
+    /**
+     * Translate a comma-separated list of known values (e.g. "Bachelor, Master, PhD").
+     */
+    public static function translateList(?string $value): string
+    {
+        if (blank($value)) {
+            return '-';
+        }
+
+        $separator = app()->getLocale() === 'ar' ? '، ' : ', ';
+
+        return collect(explode(',', $value))
+            ->map(fn ($part) => __(trim($part)))
+            ->implode($separator);
+    }
+
+    public function getDegreeLabelAttribute(): string
+    {
+        return self::translateList($this->degree);
+    }
+
+    public function getFundingLabelAttribute(): string
+    {
+        return filled($this->funding_type) ? __($this->funding_type) : '-';
+    }
+
+    public function getStatusLabelAttribute(): string
+    {
+        return __($this->status);
+    }
 
     public function country()
     {

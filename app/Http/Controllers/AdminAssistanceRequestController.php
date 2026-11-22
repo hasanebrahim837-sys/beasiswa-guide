@@ -37,6 +37,6 @@ class AdminAssistanceRequestController extends Controller
 
         return redirect()
             ->route('admin.assistance_requests.show', $assistanceRequest)
-            ->with('success', 'Request status updated successfully.');
+            ->with('success', __('Request status updated successfully.'));
     }
 }

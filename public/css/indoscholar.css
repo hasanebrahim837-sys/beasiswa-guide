@@ -11,7 +11,8 @@
 @font-face { font-family: 'Open Sans'; src: url('/fonts/open-sans-latin-600-normal.woff2') format('woff2'); font-weight: 600; font-display: swap; }
 @font-face { font-family: 'Open Sans'; src: url('/fonts/open-sans-latin-700-normal.woff2') format('woff2'); font-weight: 700; font-display: swap; }
 @font-face { font-family: 'Roboto Slab'; src: url('/fonts/roboto-slab-latin-700-normal.woff2') format('woff2'); font-weight: 700; font-display: swap; }
-@font-face { font-family: 'Amiri'; src: url('/fonts/amiri-arabic-700-normal.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Amiri'; src: url('/fonts/amiri-arabic-700-normal.woff2') format('woff2'); font-weight: 700; font-display: swap; unicode-range: U+0600-06FF, U+0750-077F, U+0870-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFC; }
+@font-face { font-family: 'Amiri'; src: url('/fonts/amiri-latin-700-normal.woff2') format('woff2'); font-weight: 700; font-display: swap; unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-200B, U+2012-206F, U+20AC, U+2122, U+2212, U+FEFF, U+FFFD; }
 @font-face { font-family: 'IBM Plex Sans Arabic'; src: url('/fonts/ibm-plex-sans-arabic-arabic-400-normal.woff2') format('woff2'); font-weight: 400; font-display: swap; }
 @font-face { font-family: 'IBM Plex Sans Arabic'; src: url('/fonts/ibm-plex-sans-arabic-arabic-700-normal.woff2') format('woff2'); font-weight: 700; font-display: swap; }
 
@@ -84,10 +85,11 @@ h1, h2, h3 { font-family: var(--font-heading); font-weight: 600; }
 .hero-card { background: var(--paper); border: 1px solid var(--line); border-top: 6px solid var(--olive); border-radius: 22px; padding: 30px; box-shadow: 0 18px 40px rgba(43, 33, 28, .08); }
 .hero-card h3 { margin-bottom: 15px; font-size: 22px; color: var(--burgundy); }
 .hero-card ul { list-style: none; line-height: 2.1; color: var(--dark); }
-.petal-list li, .hero-card li { padding-left: 30px; background: var(--petal) no-repeat left center / 18px 18px; }
+.petal-list li, .hero-card li { padding-inline-start: 30px; background: var(--petal) no-repeat left center / 18px 18px; }
 
 .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 26px; }
-.stat-card { background: var(--beige); border-radius: 16px; padding: 18px; text-align: center; }
+.stat-card { background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 18px; text-align: center; }
+.hero-card .stat-card { background: var(--beige); border-color: transparent; }
 .stat-card h3 { color: var(--burgundy); font-size: 28px; margin-bottom: 4px; }
 .stat-card p { color: var(--muted); font-size: 14px; }
 
@@ -117,6 +119,18 @@ input, select, textarea { width: 100%; padding: 12px 14px; border: 1px solid var
 input[type=checkbox], input[type=radio] { width: 18px; height: 18px; padding: 0; border-radius: 4px; color: var(--olive); }
 input:focus, select:focus, textarea:focus { outline: none; border-color: var(--olive); box-shadow: 0 0 0 3px rgba(107, 105, 71, .2); }
 
+select { padding-inline-end: 40px; }
+.form-section-title { font-family: var(--font-body); color: var(--burgundy); font-size: 20px; padding-top: 18px; border-top: 1px solid var(--line); }
+.form-hint { color: var(--muted); font-size: 14px; margin-top: 4px; }
+
+/* File picker */
+.file-field { display: flex; align-items: center; gap: 12px; padding: 8px; border: 1px solid var(--line); border-radius: 12px; background: #fff; cursor: pointer; }
+.file-field input[type="file"] { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; }
+.file-field .file-button { flex: none; background: var(--olive-soft); color: var(--olive); font-weight: 700; font-size: 14px; padding: 7px 14px; border-radius: 999px; }
+.file-field:hover .file-button { background: var(--olive); color: #fff; }
+.file-field .file-name { color: var(--muted); font-size: 14px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.file-field:focus-within { border-color: var(--olive); box-shadow: 0 0 0 3px rgba(107, 105, 71, .2); }
+
 /* ---------- Detail / forms ---------- */
 .detail-box, .form-card { background: var(--paper); border-radius: 24px; padding: 35px; border: 1px solid var(--line); box-shadow: 0 10px 25px rgba(43, 33, 28, .06); }
 .detail-box h1 { font-size: 36px; margin-bottom: 15px; color: var(--burgundy); }
@@ -145,7 +159,7 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--o
 /* ---------- Admin ---------- */
 .table-card { background: var(--paper); border-radius: 20px; padding: 24px; border: 1px solid var(--line); box-shadow: 0 10px 25px rgba(43, 33, 28, .06); overflow-x: auto; }
 .admin-table { width: 100%; border-collapse: collapse; }
-.admin-table th, .admin-table td { padding: 14px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+.admin-table th, .admin-table td { padding: 14px; border-bottom: 1px solid var(--line); text-align: start; vertical-align: top; }
 .admin-table th { color: var(--dark); background: var(--beige); }
 .status-pill { display: inline-block; padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 700; background: var(--olive-soft); color: var(--olive); }
 .file-link { display: block; margin-bottom: 8px; color: var(--burgundy); font-weight: 700; }
@@ -158,11 +172,40 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--o
 .footer-phone { font-weight: 700; font-size: 18px; color: var(--beige); direction: ltr; }
 .footer-bottom { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 18px; font-size: 13px; color: #CDB7BB; }
 
+/* ---------- Language switcher (UK flag = English, Yemen flag = Arabic) ---------- */
+.lang-switch { display: inline-flex; align-items: center; gap: 6px; }
+.lang-flag { display: inline-flex; width: 34px; height: 23px; border-radius: 5px; overflow: hidden; border: 2px solid transparent; opacity: .55; transition: opacity .15s, border-color .15s, transform .15s; box-shadow: 0 1px 3px rgba(43, 33, 28, .25); }
+.lang-flag svg { width: 100%; height: 100%; display: block; }
+.lang-flag:hover { opacity: 1; transform: translateY(-1px); }
+.lang-flag.is-active { opacity: 1; border-color: var(--olive); }
+.guest-lang { margin-bottom: 18px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+/* ---------- Arabic (right-to-left) ---------- */
+html[lang="ar"] {
+    --font-body: 'IBM Plex Sans Arabic', 'Open Sans', Tahoma, sans-serif;
+    --font-heading: 'Amiri', 'IBM Plex Sans Arabic', serif;
+}
+html[lang="ar"] body { font-size: 16px; }
+html[lang="ar"] h1, html[lang="ar"] h2, html[lang="ar"] h3 { font-weight: 700; line-height: 1.5; }
+html[lang="ar"] .hero h1 { font-size: 54px; line-height: 1.45; }
+html[lang="ar"] .section-title h2 { font-size: 36px; }
+html[lang="ar"] .card h3, html[lang="ar"] .hero-card h3 { font-size: 24px; }
+/* Arabic letters must stay connected: no letter-spacing or uppercase on Arabic text */
+html[lang="ar"] .info-item strong, html[lang="ar"] .tracking-widest, html[lang="ar"] .uppercase { letter-spacing: 0; text-transform: none; }
+html[lang="ar"] .info-item strong { font-size: 14px; }
+html[lang="ar"] .stat-card h3 { font-family: var(--font-body); }
+[dir="rtl"] .petal-list li, [dir="rtl"] .hero-card li { background-position: right center; }
+[dir="rtl"] .hero .hero-flower { left: auto; right: -340px; transform: scaleX(-1); }
+[dir="rtl"] select { background-position: left .75rem center; }
+[dir="rtl"] input[type="email"], [dir="rtl"] input[type="url"], [dir="rtl"] input[type="password"], [dir="rtl"] input[dir="ltr"] { direction: ltr; text-align: right; }
+[dir="rtl"] .footer-phone { unicode-bidi: isolate; }
+
 @media (max-width: 900px) {
     .hero, .grid, .info-row, .filter-box, .form-grid { grid-template-columns: 1fr; }
     .stats { gap: 8px; }
     .stat-card { padding: 14px 6px; }
-    .hero h1 { font-size: 34px; }
+    .hero h1, html[lang="ar"] .hero h1 { font-size: 34px; }
     .hero .hero-flower { display: none; }
     .navbar { flex-direction: column; gap: 15px; }
     .nav-links { flex-wrap: wrap; justify-content: center; gap: 14px; }
