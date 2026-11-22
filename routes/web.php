@@ -71,6 +71,10 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::put('/admin/assistance-requests/{assistanceRequest}', [AdminAssistanceRequestController::class, 'update'])
         ->name('admin.assistance_requests.update');
 
+    // Student documents are private: only admins can open them, through this route.
+    Route::get('/admin/documents/{document}', [AdminAssistanceRequestController::class, 'document'])
+        ->name('admin.documents.show');
+
     Route::get('/admin/scholarships', [AdminScholarshipController::class, 'index'])
         ->name('admin.scholarships.index');
 

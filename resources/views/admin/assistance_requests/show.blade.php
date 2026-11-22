@@ -48,14 +48,14 @@
 
         <div class="content-block">
             <h3>{{ __('Student Notes') }}</h3>
-            <p>{{ $assistanceRequest->student_notes ?? 'No notes.' }}</p>
+            <p>{{ $assistanceRequest->student_notes ?? __('No notes.') }}</p>
         </div>
 
         <div class="content-block">
             <h3>{{ __('Uploaded Documents') }}</h3>
 
             @forelse($assistanceRequest->documents as $document)
-                <a class="file-link" href="{{ asset('storage/' . $document->file_path) }}" target="_blank">
+                <a class="file-link" href="{{ route('admin.documents.show', $document) }}" target="_blank" rel="noopener">
                     {{ __($document->document_type) }} - {{ $document->original_name }}
                 </a>
             @empty
