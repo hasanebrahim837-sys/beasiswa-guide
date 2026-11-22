@@ -78,7 +78,10 @@ class ScholarshipsSeeder extends Seeder
         $scholarship->save();
     }
 
-    /** Checked on the official pages on 2026-11-22. */
+    /**
+     * Checked on the official pages on 2026-11-22.
+     * Rule: a scholarship is published only when it is open, or opens within 30 days.
+     */
     private function verified(): array
     {
         return [
@@ -87,21 +90,22 @@ class ScholarshipsSeeder extends Seeder
                 'title_ar' => 'القبول والمنح في الجامعة الإسلامية الدولية الإندونيسية (UIII) 2027',
                 'university' => ['name' => 'Universitas Islam Internasional Indonesia (UIII)', 'city' => 'Depok', 'website' => 'https://www.uiii.ac.id'],
                 'degree' => 'Master, PhD',
-                'funding_type' => null, // coverage is not stated on the admissions page
+                'funding_type' => 'Tuition + Living Allowance',
                 'open_date' => '2026-09-23',
                 'deadline' => '2027-03-31',
                 'official_link' => 'https://admissions.uiii.ac.id/',
-                'source_link' => 'https://admissions.uiii.ac.id/',
-                'description' => "Universitas Islam Internasional Indonesia (UIII, Depok) is open for applications (Admissions 2026/2027) until 31 March 2027. After receiving the Letter of Acceptance, admitted students apply for a scholarship during 22–29 April 2027: UIII Scholarship (master's), PhD LPDP–UIII, and INSANI–UIII (target countries include Yemen, Sudan and Syria). Scholarship coverage is not stated on the admissions page — confirm with UIII.",
-                'description_ar' => "تستقبل الجامعة الإسلامية الدولية الإندونيسية (UIII) في ديبوك طلبات الالتحاق حتى 31 مارس 2027. بعد الحصول على خطاب القبول، يقدّم الطالب على المنحة في الفترة من 22 إلى 29 أبريل 2027: منحة UIII للماجستير، ومنحة الدكتوراه LPDP–UIII، ومنحة INSANI–UIII (من الدول المستهدفة: اليمن والسودان وسوريا). تفاصيل ما تغطيه المنحة غير مذكورة في صفحة القبول ويجب تأكيدها مع الجامعة.",
-                'eligibility' => "Master's: GPA at least 3.00/4.00; English: IELTS 6.0, TOEFL iBT 80 or TOEFL ITP 525 (Law: IELTS 6.5 / ITP 550); TOAFL 550 is also listed. UIII Master's Scholarship: maximum age 35; not for applicants who already hold or are enrolled in a master's degree.\nPhD: GPA at least 3.50/4.00; English: IELTS 6.5, TOEFL iBT 94 or TOEFL ITP 550.\nOnly applicants who meet the English requirement can apply for the scholarship. Application fee: USD 50. Apply only through the official portal.",
-                'eligibility_ar' => "الماجستير: معدل 3.00 من 4.00 على الأقل؛ اللغة الإنجليزية: IELTS 6.0 أو TOEFL iBT 80 أو TOEFL ITP 525 (القانون: IELTS 6.5 أو ITP 550)، ومذكور أيضاً اختبار TOAFL 550. منحة UIII للماجستير: العمر 35 سنة كحد أقصى، ولا تُمنح لمن يحمل الماجستير أو يدرسه حالياً.\nالدكتوراه: معدل 3.50 من 4.00 على الأقل؛ IELTS 6.5 أو TOEFL iBT 94 أو TOEFL ITP 550.\nلا يحق التقديم على المنحة إلا لمن يحقق شرط اللغة الإنجليزية. رسوم التقديم: 50 دولاراً. التقديم فقط عبر البوابة الرسمية.",
-                'required_documents' => "English certificate (no more than 2 years old); CV; contacts of two academic referees; motivation letter; bachelor's degree and GPA certificate (with Scholaro GPA conversion if the scale is not 4.00). PhD also: research proposal and two academic writing samples.",
-                'required_documents_ar' => "شهادة اللغة الإنجليزية (لا يزيد عمرها عن سنتين)؛ السيرة الذاتية؛ بيانات تواصل اثنين من المرجعيات الأكاديمية؛ رسالة الدافع؛ شهادة البكالوريوس وكشف المعدل (مع تحويل المعدل عبر موقع Scholaro إذا لم يكن من 4.00). للدكتوراه أيضاً: مقترح بحثي ونموذجان من الكتابة الأكاديمية.",
+                'source_link' => 'https://uiii.ac.id/faq/',
+                'description' => "Universitas Islam Internasional Indonesia (UIII, Depok) is open for applications until 31 March 2027.\n\nScholarships: UIII Scholarship (master's, 4 semesters), INSANI–UIII (target countries include Yemen, Sudan and Syria), PhD LPDP–UIII and PEMRI–UIII. According to UIII, its scholarships cover tuition, living expenses and other allowances. UIII's housing page states that scholarship holders receive a monthly stipend of IDR 5,000,000, from which the dormitory fee of IDR 1,000,000 is deducted (confirm the 2027 amounts with UIII). A UIII scholarship holder may not receive any other funding.\n\nHow to apply:\n1. Apply for admission on the official portal before 31 March 2027 (fee USD 50).\n2. Selection: document check, desk review and interview (January–April 2027).\n3. After the Letter of Acceptance (19–22 April 2027), submit the scholarship application during 22–29 April 2027.\n4. Results: 30 April 2027.",
+                'description_ar' => "تستقبل الجامعة الإسلامية الدولية الإندونيسية (UIII) في ديبوك طلبات الالتحاق حتى 31 مارس 2027.\n\nالمنح المتاحة: منحة UIII للماجستير (4 فصول دراسية)، ومنحة INSANI–UIII (من الدول المستهدفة: اليمن والسودان وسوريا)، ومنحة الدكتوراه LPDP–UIII، ومنحة PEMRI–UIII. حسب الجامعة، تغطي منحها الرسوم الدراسية ونفقات المعيشة وبدلات أخرى. وتذكر صفحة السكن في الجامعة أن الحاصل على المنحة يتقاضى راتباً شهرياً قدره 5,000,000 روبية، يُخصم منه 1,000,000 روبية رسوم السكن الجامعي (يُرجى تأكيد مبالغ 2027 مع الجامعة). لا يحق للحاصل على منحة UIII الحصول على أي تمويل آخر.\n\nخطوات التقديم:\n1. قدّم طلب الالتحاق عبر البوابة الرسمية قبل 31 مارس 2027 (رسوم التقديم 50 دولاراً).\n2. مراحل الاختيار: مراجعة الأوراق، والتقييم، والمقابلة (من يناير إلى أبريل 2027).\n3. بعد صدور خطاب القبول (19–22 أبريل 2027)، قدّم طلب المنحة في الفترة من 22 إلى 29 أبريل 2027.\n4. إعلان النتائج: 30 أبريل 2027.",
+                'eligibility' => "Master's: GPA at least 3.00/4.00; English: IELTS 6.0, TOEFL iBT 80, PTE 58 or TOEFL ITP 525 (Law: IELTS 6.5 / ITP 550). UIII Master's Scholarship: maximum age 35; not for applicants who already hold or are enrolled in a master's degree; all master's programmes except executive classes.\nPhD: GPA at least 3.50/4.00; English: IELTS 6.5, TOEFL ITP 550 or PTE 65.\nOnly applicants who meet the English requirement can apply for a scholarship. Language certificates must be no more than 2 years old. Apply only through the official portal (applications by email are not accepted).",
+                'eligibility_ar' => "الماجستير: معدل 3.00 من 4.00 على الأقل؛ اللغة الإنجليزية: IELTS 6.0 أو TOEFL iBT 80 أو PTE 58 أو TOEFL ITP 525 (القانون: IELTS 6.5 أو ITP 550). منحة UIII للماجستير: العمر 35 سنة كحد أقصى، ولا تُمنح لمن يحمل الماجستير أو يدرسه حالياً، وتشمل كل برامج الماجستير ما عدا الفصول التنفيذية.\nالدكتوراه: معدل 3.50 من 4.00 على الأقل؛ IELTS 6.5 أو TOEFL ITP 550 أو PTE 65.\nلا يحق التقديم على المنحة إلا لمن يحقق شرط اللغة الإنجليزية، ويجب ألا يزيد عمر شهادة اللغة عن سنتين. التقديم فقط عبر البوابة الرسمية (لا تُقبل الطلبات بالبريد الإلكتروني).",
+                'required_documents' => "English certificate (no more than 2 years old); CV (table format); contacts of two academic referees; motivation letter; bachelor's degree from an accredited institution and GPA certificate (with Scholaro GPA conversion if the scale is not 4.00); passport copy and photo (required for the Turath programme). PhD also: brief research proposal and two academic writing samples.",
+                'required_documents_ar' => "شهادة اللغة الإنجليزية (لا يزيد عمرها عن سنتين)؛ السيرة الذاتية (على شكل جدول)؛ بيانات تواصل اثنين من المرجعيات الأكاديمية؛ رسالة الدافع؛ شهادة البكالوريوس من جامعة معتمدة وكشف المعدل (مع تحويل المعدل عبر موقع Scholaro إذا لم يكن من 4.00)؛ صورة جواز السفر وصورة شخصية (مطلوبة لبرنامج التراث). للدكتوراه أيضاً: مقترح بحثي مختصر ونموذجان من الكتابة الأكاديمية.",
             ],
             [
                 'title' => 'KNB Scholarship 2027',
                 'title_ar' => 'منحة KNB 2027',
+                'active' => false, // hidden until the 2027 call is announced (publish when open or opening within 30 days)
                 'degree' => 'Bachelor, Master, PhD',
                 'funding_type' => null, // to confirm from the 2027 guide
                 'open_date' => null,

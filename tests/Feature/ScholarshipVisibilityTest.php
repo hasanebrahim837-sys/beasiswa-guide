@@ -52,6 +52,7 @@ class ScholarshipVisibilityTest extends TestCase
 
         $this->assertFalse((bool) $sample->fresh()->is_active);
         $this->assertTrue((bool) Scholarship::where('title', 'UIII Admissions & Scholarships 2027')->value('is_active'));
+        $this->assertFalse((bool) Scholarship::where('title', 'KNB Scholarship 2027')->value('is_active'));
         $this->assertFalse((bool) Scholarship::where('title', 'UMY International Student Scholarship 2027/2028')->value('is_active'));
 
         // Re-running does not overwrite a draft the consultant has corrected and activated.

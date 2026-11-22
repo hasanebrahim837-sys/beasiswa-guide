@@ -19,9 +19,7 @@
 
             <h1>{{ $scholarship->localized('title') }}</h1>
 
-            <p style="color:var(--muted); line-height:1.7;">
-                {{ $scholarship->localized('description') }}
-            </p>
+            <p style="color:var(--dark); line-height:1.8; white-space:pre-line;">{{ $scholarship->localized('description') }}</p>
 
             <div class="info-row">
                 <div class="info-item">
